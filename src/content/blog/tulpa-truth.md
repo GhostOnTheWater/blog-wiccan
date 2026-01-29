@@ -124,7 +124,7 @@ These experiences are **not classified as mental illness** unless they cause dis
 
 ---
 
-## What the Evidence Actually Supports
+## What the Evidence Actually Supportss
 
 - Humans can generate vivid internal agents  
 - Cultural framing shapes interpretation  
