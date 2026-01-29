@@ -2,6 +2,7 @@
 title: "Tulpa: Origins, Meaning, Psychology, and the Boundary of Reality"
 description: "A deeply researched, factual exploration of the tulpa concept—its Tibetan Buddhist origins, Western reinterpretation, psychological explanations, and what academic research actually supports."
 slug: "tulpa-origins-meaning-research"
+heroImage: '../../assets/tulpa-hero-image.png'
 ---
 
 # Tulpa: Origins, Meaning, Psychology, and the Boundary of Reality
