@@ -11,7 +11,7 @@ This article presents fact-based, academically supported information drawn from 
 
 ---
 
-## Is the Wendigo real ?
+## Is the Wendigo Real ?
 
 The **Wendigo** (also spelled *Windigo*, *Wiitiko*, *Wétiko*) originates from the oral traditions of **Algonquian-speaking Indigenous peoples** of North America, particularly among communities in the **Great Lakes region** and **subarctic forests** of Canada and the northern United States.
 
