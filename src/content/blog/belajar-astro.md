@@ -2,6 +2,7 @@
 title: 'Belajar Astro Pertama Kali'
 description: 'Kenapa gue pindah dari WordPress ke Astro'
 pubDate: 'Jan 29 2026'
+heroImage: 'src/assets/blog-placeholder-1.jpg'
 ---
 
 ## Halo Dunia
