@@ -149,23 +149,6 @@ These methods were aimed at **preventing** the transformation, **not reversing i
 
 ---
 
-## What the Wendigo Is NOT
-
-Let's be clear. There is **no academic or Indigenous evidence** for:
-
-- ❌ **Antlered deer monsters**
-- ❌ **Silver bullets** or special weapons
-- ❌ **Immortality or regeneration**
-- ❌ **Cryptid hunting behavior**
-- ❌ **Tall humanoid creatures roaming forests**
-
-These elements come from:
-- **20th-century fiction** (pulp horror magazines)
-- **Movies and TV** (*Supernatural*, *Antlers*, *Until Dawn*)
-- **Video games** (*The Witcher 3*, *Fallout 76*)
-
----
-
 ## Why Pop Culture Gets the Wendigo Wrong
 
 Modern portrayals tend to:
