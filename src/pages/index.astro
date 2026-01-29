@@ -10,16 +10,20 @@ import { SITE_TITLE } from "../consts";
 	<head>
 		<BaseHead
 			title={SITE_TITLE}
-			description="A chilling collection of stories, thoughts, and mysteries from the shadows. Enter if you dare."
+			description="Enter the void. A collection of nightmares, dark tales, and forbidden knowledge."
 		/>
 
 		<style>
 			:root {
-				--hero-height: clamp(500px, 70vh, 700px);
+				--hero-height: 100vh;
 			}
 
 			body {
 				margin: 0;
+				cursor:
+					url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="8" fill="rgba(139,0,0,0.5)" stroke="red" stroke-width="1"/></svg>')
+						10 10,
+					auto;
 			}
 
 			main {
@@ -28,7 +32,45 @@ import { SITE_TITLE } from "../consts";
 				padding: 0 1.5rem 7rem;
 			}
 
-			/* HERO SECTION */
+			/* EERIE PARTICLES */
+			.particles {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+				z-index: 1;
+			}
+
+			.particle {
+				position: absolute;
+				width: 2px;
+				height: 2px;
+				background: var(--accent-blood);
+				border-radius: 50%;
+				animation: float-particle 20s infinite linear;
+				opacity: 0.3;
+			}
+
+			@keyframes float-particle {
+				0% {
+					transform: translateY(100vh) translateX(0);
+					opacity: 0;
+				}
+				10% {
+					opacity: 0.3;
+				}
+				90% {
+					opacity: 0.3;
+				}
+				100% {
+					transform: translateY(-100vh) translateX(100px);
+					opacity: 0;
+				}
+			}
+
+			/* HERO SECTION - ULTRA SCARY */
 			.hero {
 				position: relative;
 				height: var(--hero-height);
@@ -37,85 +79,150 @@ import { SITE_TITLE } from "../consts";
 				justify-content: center;
 				text-align: center;
 				overflow: hidden;
-				margin-bottom: 5rem;
-				background: linear-gradient(
-					180deg,
-					var(--bg-secondary) 0%,
-					var(--bg-primary) 100%
+				margin-bottom: 0;
+				background: radial-gradient(
+					ellipse at center,
+					#0a0000 0%,
+					#000000 100%
 				);
 			}
 
+			/* Vignette effect */
 			.hero::before {
 				content: "";
+				position: absolute;
+				inset: 0;
+				background: radial-gradient(
+					ellipse at center,
+					transparent 0%,
+					rgba(0, 0, 0, 0.8) 100%
+				);
+				pointer-events: none;
+				z-index: 2;
+			}
+
+			/* Animated grain/noise */
+			.hero::after {
+				content: "";
+				position: absolute;
+				inset: 0;
+				background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.05"/></svg>');
+				opacity: 0.4;
+				animation: grain 0.5s steps(4) infinite;
+				pointer-events: none;
+				z-index: 3;
+			}
+
+			@keyframes grain {
+				0%,
+				100% {
+					transform: translate(0, 0);
+				}
+				10% {
+					transform: translate(-2%, -2%);
+				}
+				20% {
+					transform: translate(2%, 2%);
+				}
+				30% {
+					transform: translate(-2%, 2%);
+				}
+				40% {
+					transform: translate(2%, -2%);
+				}
+				50% {
+					transform: translate(-2%, -2%);
+				}
+				60% {
+					transform: translate(2%, 2%);
+				}
+				70% {
+					transform: translate(-2%, 2%);
+				}
+				80% {
+					transform: translate(2%, -2%);
+				}
+				90% {
+					transform: translate(-2%, -2%);
+				}
+			}
+
+			/* Creepy eyes in darkness */
+			.eyes {
+				position: absolute;
+				top: 20%;
+				left: 15%;
+				display: flex;
+				gap: 30px;
+				animation: blink 8s infinite;
+				z-index: 4;
+			}
+
+			.eye {
+				width: 12px;
+				height: 12px;
+				background: var(--accent-blood);
+				border-radius: 50%;
+				box-shadow: 0 0 20px var(--accent-blood);
+				animation: eye-glow 3s ease-in-out infinite;
+			}
+
+			@keyframes blink {
+				0%,
+				48%,
+				52%,
+				100% {
+					opacity: 1;
+				}
+				50% {
+					opacity: 0;
+				}
+			}
+
+			@keyframes eye-glow {
+				0%,
+				100% {
+					filter: brightness(1);
+				}
+				50% {
+					filter: brightness(1.5);
+				}
+			}
+
+			/* Blood drip effect */
+			.blood-drips {
 				position: absolute;
 				top: 0;
 				left: 0;
 				right: 0;
-				bottom: 0;
-				background:
-					radial-gradient(
-						ellipse at 50% 20%,
-						rgba(139, 0, 0, 0.15),
-						transparent 50%
-					),
-					radial-gradient(
-						ellipse at 80% 60%,
-						rgba(74, 14, 78, 0.1),
-						transparent 40%
-					);
-				animation: pulse-bg 8s ease-in-out infinite;
-			}
-
-			@keyframes pulse-bg {
-				0%,
-				100% {
-					opacity: 0.6;
-				}
-				50% {
-					opacity: 1;
-				}
-			}
-
-			.haunted-mansion {
-				position: absolute;
-				bottom: 0;
-				left: 50%;
-				transform: translateX(-50%);
-				width: 600px;
-				max-width: 90%;
-				height: 60%;
-				opacity: 0.4;
-				filter: drop-shadow(0 0 30px rgba(139, 0, 0, 0.4));
-			}
-
-			.haunted-mansion svg {
-				width: 100%;
 				height: 100%;
+				pointer-events: none;
+				z-index: 5;
 			}
 
-			.fog-layer {
+			.blood-drip {
 				position: absolute;
-				bottom: 0;
-				left: 0;
-				right: 0;
-				height: 200px;
+				width: 2px;
+				height: 0;
 				background: linear-gradient(
-					to top,
-					rgba(139, 0, 0, 0.1),
+					to bottom,
+					var(--accent-blood),
 					transparent
 				);
-				animation: fog-drift 15s ease-in-out infinite;
+				animation: drip-down 4s ease-in infinite;
 			}
 
-			@keyframes fog-drift {
-				0%,
-				100% {
-					opacity: 0.3;
-					transform: translateX(0);
+			@keyframes drip-down {
+				0% {
+					height: 0;
+					opacity: 0;
 				}
-				50% {
-					opacity: 0.6;
-					transform: translateX(20px);
+				10% {
+					opacity: 1;
+				}
+				100% {
+					height: 200px;
+					opacity: 0;
 				}
 			}
 
@@ -125,34 +232,114 @@ import { SITE_TITLE } from "../consts";
 				padding: 2rem;
 			}
 
+			/* Glitch effect on title */
 			.hero h1 {
-				font-size: clamp(3rem, 7vw, 6rem);
-				margin: 0 0 1.5rem;
-				letter-spacing: 0.08em;
-				animation: flicker 4s ease-in-out infinite;
+				font-size: clamp(3.5rem, 8vw, 7rem);
+				margin: 0 0 2rem;
+				letter-spacing: 0.1em;
+				color: var(--text-primary);
 				text-shadow:
-					0 0 20px rgba(139, 0, 0, 0.8),
-					0 0 40px rgba(139, 0, 0, 0.6),
-					2px 2px 8px rgba(0, 0, 0, 0.8);
+					0 0 30px rgba(139, 0, 0, 1),
+					0 0 60px rgba(139, 0, 0, 0.8),
+					3px 3px 0 rgba(139, 0, 0, 0.5),
+					-3px -3px 0 rgba(0, 255, 65, 0.2);
+				animation: glitch 5s infinite;
+				position: relative;
 			}
 
-			@keyframes flicker {
+			.hero h1::before,
+			.hero h1::after {
+				content: attr(data-text);
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+			.hero h1::before {
+				color: #ff0000;
+				animation: glitch-1 0.3s infinite;
+				clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+			}
+
+			.hero h1::after {
+				color: #00ff00;
+				animation: glitch-2 0.3s infinite;
+				clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+			}
+
+			@keyframes glitch {
 				0%,
 				100% {
-					opacity: 1;
+					transform: translate(0);
+					text-shadow:
+						0 0 30px rgba(139, 0, 0, 1),
+						0 0 60px rgba(139, 0, 0, 0.8),
+						3px 3px 0 rgba(139, 0, 0, 0.5);
+				}
+				25% {
+					transform: translate(-2px, 2px);
+					text-shadow:
+						0 0 40px rgba(139, 0, 0, 1),
+						0 0 80px rgba(139, 0, 0, 0.9),
+						-3px 3px 0 rgba(0, 255, 65, 0.3);
 				}
 				50% {
-					opacity: 0.95;
+					transform: translate(2px, -2px);
+					text-shadow:
+						0 0 35px rgba(139, 0, 0, 1),
+						0 0 70px rgba(139, 0, 0, 0.85),
+						3px -3px 0 rgba(139, 0, 0, 0.4);
 				}
-				51% {
-					opacity: 1;
+				75% {
+					transform: translate(-1px, -1px);
+					text-shadow:
+						0 0 45px rgba(139, 0, 0, 1),
+						0 0 90px rgba(139, 0, 0, 0.95),
+						-3px -3px 0 rgba(0, 255, 65, 0.2);
 				}
-				52% {
-					opacity: 0.93;
+			}
+
+			@keyframes glitch-1 {
+				0% {
+					transform: translate(0);
 				}
-				53%,
-				99% {
-					opacity: 1;
+				20% {
+					transform: translate(-3px, 3px);
+				}
+				40% {
+					transform: translate(-3px, -3px);
+				}
+				60% {
+					transform: translate(3px, 3px);
+				}
+				80% {
+					transform: translate(3px, -3px);
+				}
+				100% {
+					transform: translate(0);
+				}
+			}
+
+			@keyframes glitch-2 {
+				0% {
+					transform: translate(0);
+				}
+				20% {
+					transform: translate(3px, -3px);
+				}
+				40% {
+					transform: translate(3px, 3px);
+				}
+				60% {
+					transform: translate(-3px, -3px);
+				}
+				80% {
+					transform: translate(-3px, 3px);
+				}
+				100% {
+					transform: translate(0);
 				}
 			}
 
@@ -162,6 +349,89 @@ import { SITE_TITLE } from "../consts";
 				font-size: clamp(1.1rem, 2vw, 1.3rem);
 				color: var(--text-secondary);
 				line-height: 1.7;
+				text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+				animation: fade-pulse 4s ease-in-out infinite;
+			}
+
+			@keyframes fade-pulse {
+				0%,
+				100% {
+					opacity: 0.9;
+				}
+				50% {
+					opacity: 1;
+				}
+			}
+
+			/* Warning message */
+			.warning {
+				position: absolute;
+				bottom: 10%;
+				left: 50%;
+				transform: translateX(-50%);
+				color: var(--accent-blood);
+				font-size: 0.9rem;
+				letter-spacing: 0.3em;
+				text-transform: uppercase;
+				animation: warning-pulse 2s ease-in-out infinite;
+				z-index: 10;
+				text-shadow: 0 0 10px currentColor;
+			}
+
+			@keyframes warning-pulse {
+				0%,
+				100% {
+					opacity: 0.5;
+					transform: translateX(-50%) scale(1);
+				}
+				50% {
+					opacity: 1;
+					transform: translateX(-50%) scale(1.05);
+				}
+			}
+
+			/* Scroll indicator */
+			.scroll-indicator {
+				position: absolute;
+				bottom: 5%;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 30px;
+				height: 50px;
+				border: 2px solid var(--accent-blood);
+				border-radius: 20px;
+				z-index: 10;
+			}
+
+			.scroll-indicator::before {
+				content: "";
+				position: absolute;
+				top: 10px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 6px;
+				height: 10px;
+				background: var(--accent-blood);
+				border-radius: 3px;
+				animation: scroll-animation 2s infinite;
+			}
+
+			@keyframes scroll-animation {
+				0% {
+					opacity: 1;
+					transform: translateX(-50%) translateY(0);
+				}
+				100% {
+					opacity: 0;
+					transform: translateX(-50%) translateY(20px);
+				}
+			}
+
+			/* SECTIONS */
+			.content-wrapper {
+				background: var(--bg-primary);
+				position: relative;
+				padding-top: 6rem;
 			}
 
 			.skull-divider {
@@ -188,10 +458,19 @@ import { SITE_TITLE } from "../consts";
 			.skull-divider span {
 				color: var(--accent-blood);
 				font-size: 2rem;
-				animation: float 3s ease-in-out infinite;
+				animation: skull-float 3s ease-in-out infinite;
 			}
 
-			/* SECTIONS */
+			@keyframes skull-float {
+				0%,
+				100% {
+					transform: translateY(0) rotate(0deg);
+				}
+				50% {
+					transform: translateY(-10px) rotate(5deg);
+				}
+			}
+
 			.section {
 				margin-bottom: 6rem;
 			}
@@ -200,7 +479,9 @@ import { SITE_TITLE } from "../consts";
 				font-size: clamp(2rem, 4vw, 2.8rem);
 				margin-bottom: 1rem;
 				color: var(--accent-blood-light);
-				text-shadow: 1px 1px 3px rgba(139, 0, 0, 0.4);
+				text-shadow:
+					1px 1px 3px rgba(139, 0, 0, 0.4),
+					0 0 20px rgba(139, 0, 0, 0.3);
 			}
 
 			.section p {
@@ -210,7 +491,7 @@ import { SITE_TITLE } from "../consts";
 				line-height: 1.8;
 			}
 
-			/* CARD GRID */
+			/* CARD GRID - Enhanced Horror */
 			.grid {
 				display: grid;
 				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -221,15 +502,17 @@ import { SITE_TITLE } from "../consts";
 			.card {
 				background: linear-gradient(
 					135deg,
-					var(--bg-secondary),
-					var(--bg-primary)
+					rgba(26, 26, 26, 0.8),
+					rgba(10, 10, 10, 0.9)
 				);
 				border: 1px solid var(--border-color);
 				padding: 2.5rem 2rem;
 				position: relative;
 				overflow: hidden;
 				transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-				box-shadow: var(--shadow-sm);
+				box-shadow:
+					0 4px 20px rgba(0, 0, 0, 0.5),
+					inset 0 0 30px rgba(139, 0, 0, 0.05);
 			}
 
 			.card::before {
@@ -239,7 +522,7 @@ import { SITE_TITLE } from "../consts";
 				background: linear-gradient(
 					135deg,
 					transparent 0%,
-					rgba(139, 0, 0, 0.05) 50%,
+					rgba(139, 0, 0, 0.1) 50%,
 					transparent 100%
 				);
 				opacity: 0;
@@ -253,7 +536,8 @@ import { SITE_TITLE } from "../consts";
 				background: linear-gradient(
 					135deg,
 					var(--accent-blood),
-					var(--accent-purple)
+					var(--accent-purple),
+					var(--accent-blood)
 				);
 				opacity: 0;
 				z-index: -1;
@@ -261,8 +545,10 @@ import { SITE_TITLE } from "../consts";
 			}
 
 			.card:hover {
-				transform: translateY(-8px);
-				box-shadow: var(--shadow-glow);
+				transform: translateY(-12px) scale(1.02);
+				box-shadow:
+					0 20px 40px rgba(139, 0, 0, 0.4),
+					inset 0 0 50px rgba(139, 0, 0, 0.1);
 			}
 
 			.card:hover::before {
@@ -270,7 +556,7 @@ import { SITE_TITLE } from "../consts";
 			}
 
 			.card:hover::after {
-				opacity: 0.3;
+				opacity: 0.5;
 			}
 
 			.card-category {
@@ -281,6 +567,7 @@ import { SITE_TITLE } from "../consts";
 				font-weight: 600;
 				display: block;
 				margin-bottom: 1rem;
+				text-shadow: 0 0 10px currentColor;
 			}
 
 			.card h3 {
@@ -288,6 +575,12 @@ import { SITE_TITLE } from "../consts";
 				font-size: 1.6rem;
 				color: var(--text-primary);
 				line-height: 1.3;
+				transition: all 0.3s ease;
+			}
+
+			.card:hover h3 {
+				color: var(--accent-blood-light);
+				text-shadow: 0 0 15px rgba(139, 0, 0, 0.6);
 			}
 
 			.card p {
@@ -303,11 +596,17 @@ import { SITE_TITLE } from "../consts";
 				max-width: 720px;
 				margin: 5rem auto 0;
 				padding: 3rem;
-				background: var(--bg-secondary);
-				border: 2px solid var(--border-color);
+				background: linear-gradient(
+					135deg,
+					rgba(26, 26, 26, 0.6),
+					rgba(10, 10, 10, 0.8)
+				);
+				border: 2px solid var(--accent-blood);
 				border-radius: 8px;
 				position: relative;
-				box-shadow: var(--shadow-md);
+				box-shadow:
+					0 8px 32px rgba(139, 0, 0, 0.3),
+					inset 0 0 50px rgba(139, 0, 0, 0.1);
 			}
 
 			.closing::before {
@@ -319,6 +618,7 @@ import { SITE_TITLE } from "../consts";
 				font-size: 2rem;
 				background: var(--bg-primary);
 				padding: 0 1rem;
+				filter: drop-shadow(0 0 10px var(--accent-blood));
 			}
 
 			.closing p {
@@ -332,7 +632,12 @@ import { SITE_TITLE } from "../consts";
 			/* RESPONSIVE */
 			@media (max-width: 720px) {
 				.hero {
-					height: 500px;
+					height: 100vh;
+				}
+
+				.eyes {
+					left: 10%;
+					top: 15%;
 				}
 
 				.grid {
@@ -346,147 +651,170 @@ import { SITE_TITLE } from "../consts";
 				}
 			}
 		</style>
+
+		<script>
+			// Particle system
+			function createParticles() {
+				const container = document.querySelector(".particles");
+				if (!container) return;
+
+				for (let i = 0; i < 30; i++) {
+					const particle = document.createElement("div");
+					particle.className = "particle";
+					particle.style.left = Math.random() * 100 + "%";
+					particle.style.animationDelay = Math.random() * 20 + "s";
+					particle.style.animationDuration =
+						15 + Math.random() * 10 + "s";
+					container.appendChild(particle);
+				}
+			}
+
+			// Blood drips
+			function createBloodDrips() {
+				const container = document.querySelector(".blood-drips");
+				if (!container) return;
+
+				const positions = [10, 30, 50, 70, 90];
+				positions.forEach((pos, i) => {
+					const drip = document.createElement("div");
+					drip.className = "blood-drip";
+					drip.style.left = pos + "%";
+					drip.style.animationDelay = i * 0.8 + "s";
+					container.appendChild(drip);
+				});
+			}
+
+			// Initialize on load
+			document.addEventListener("DOMContentLoaded", () => {
+				createParticles();
+				createBloodDrips();
+			});
+
+			// Extra creepy: subtle screen shake
+			let shakeTimeout;
+			function triggerShake() {
+				document.body.style.animation = "shake 0.5s";
+				setTimeout(() => {
+					document.body.style.animation = "";
+				}, 500);
+			}
+
+			// Random subtle shakes
+			setInterval(() => {
+				if (Math.random() > 0.95) {
+					triggerShake();
+				}
+			}, 10000);
+
+			// Add shake animation
+			const style = document.createElement("style");
+			style.textContent = `
+				@keyframes shake {
+					0%, 100% { transform: translate(0, 0); }
+					10%, 30%, 50%, 70%, 90% { transform: translate(-1px, 0); }
+					20%, 40%, 60%, 80% { transform: translate(1px, 0); }
+				}
+			`;
+			document.head.appendChild(style);
+		</script>
 	</head>
 
 	<body>
+		<div class="particles"></div>
+
 		<Header />
 
 		<div class="hero">
-			<div class="haunted-mansion">
-				<svg viewBox="0 0 300 200" fill="currentColor" opacity="0.6">
-					<!-- Haunted mansion silhouette -->
-					<rect
-						x="100"
-						y="100"
-						width="100"
-						height="100"
-						fill="var(--bg-primary)"></rect>
-					<polygon
-						points="150,60 100,100 200,100"
-						fill="var(--bg-primary)"></polygon>
-					<rect
-						x="70"
-						y="130"
-						width="40"
-						height="70"
-						fill="var(--bg-primary)"></rect>
-					<polygon
-						points="90,120 70,130 110,130"
-						fill="var(--bg-primary)"></polygon>
-					<rect
-						x="190"
-						y="130"
-						width="40"
-						height="70"
-						fill="var(--bg-primary)"></rect>
-					<polygon
-						points="210,120 190,130 230,130"
-						fill="var(--bg-primary)"></polygon>
-					<!-- Windows -->
-					<rect
-						x="120"
-						y="120"
-						width="20"
-						height="25"
-						fill="var(--accent-blood)"
-						opacity="0.4"></rect>
-					<rect
-						x="160"
-						y="120"
-						width="20"
-						height="25"
-						fill="var(--accent-blood)"
-						opacity="0.4"></rect>
-					<rect
-						x="140"
-						y="155"
-						width="20"
-						height="30"
-						fill="var(--accent-blood)"
-						opacity="0.3"></rect>
-				</svg>
+			<div class="eyes">
+				<div class="eye"></div>
+				<div class="eye"></div>
 			</div>
-			<div class="fog-layer"></div>
+			<div class="blood-drips"></div>
 			<div class="hero-content">
-				<h1>Tales from the Shadows</h1>
+				<h1 data-text="TALES FROM THE SHADOWS">
+					TALES FROM THE SHADOWS
+				</h1>
 				<p>
-					Step into the darkness where stories are born from whispers
-					and fears. A chilling collection of tales, thoughts, and
-					mysteries that lurk in the corners of the mind.
+					The darkness beckons. Stories born from nightmares and
+					forbidden knowledge await those brave—or foolish—enough to
+					enter.
 				</p>
 			</div>
+			<div class="warning">⚠ Enter at your own risk ⚠</div>
+			<div class="scroll-indicator"></div>
 		</div>
 
-		<main>
-			<div class="skull-divider">
-				<span>☠</span>
-			</div>
-
-			<section class="section">
-				<h2>Welcome to the Darkness</h2>
-				<p>
-					Here, the shadows hold secrets and every story has a
-					heartbeat. This is where horror meets eloquence, where the
-					macabre dances with the profound. Venture deeper if you
-					dare.
-				</p>
-			</section>
-
-			<section class="section">
-				<h2>What Lurks Within</h2>
-
-				<div class="grid">
-					<article class="card">
-						<span class="card-category">Horror Fiction</span>
-						<h3>Nightmares in Prose</h3>
-						<p>
-							Original horror stories that crawl under your skin
-							and take root in your dreams.
-						</p>
-					</article>
-
-					<article class="card">
-						<span class="card-category">Dark Thoughts</span>
-						<h3>Whispers from the Void</h3>
-						<p>
-							Philosophical musings on existence, death, and the
-							beautiful terror of being alive.
-						</p>
-					</article>
-
-					<article class="card">
-						<span class="card-category">Reviews</span>
-						<h3>Chronicles of Fear</h3>
-						<p>
-							Deep dives into horror literature, films, and the
-							art of scaring ourselves senseless.
-						</p>
-					</article>
-
-					<article class="card">
-						<span class="card-category">Creative Writing</span>
-						<h3>The Craft of Terror</h3>
-						<p>
-							Insights on writing horror, building atmosphere, and
-							making readers sleep with the lights on.
-						</p>
-					</article>
+		<div class="content-wrapper">
+			<main>
+				<div class="skull-divider">
+					<span>☠</span>
 				</div>
-			</section>
 
-			<div class="skull-divider">
-				<span>🕯️</span>
-			</div>
+				<section class="section">
+					<h2>Welcome to the Abyss</h2>
+					<p>
+						You've crossed the threshold into shadow. Here, reality
+						blurs and nightmares take form. Each story is a descent,
+						each word a step deeper into darkness. There is no
+						turning back.
+					</p>
+				</section>
 
-			<section class="closing">
-				<p>
-					"We tell ourselves stories in order to live, but sometimes
-					we tell them to remember what it feels like to be truly
-					alive— heart pounding, breath held, standing at the edge of
-					the abyss."
-				</p>
-			</section>
-		</main>
+				<section class="section">
+					<h2>What Awaits in Darkness</h2>
+
+					<div class="grid">
+						<article class="card">
+							<span class="card-category">Horror Fiction</span>
+							<h3>Nightmares in Prose</h3>
+							<p>
+								Tales that will haunt your waking hours and
+								poison your dreams. Enter if you dare.
+							</p>
+						</article>
+
+						<article class="card">
+							<span class="card-category">Dark Thoughts</span>
+							<h3>Whispers from the Void</h3>
+							<p>
+								The void speaks. Its whispers reveal truths too
+								terrible for the light of day.
+							</p>
+						</article>
+
+						<article class="card">
+							<span class="card-category">Reviews</span>
+							<h3>Chronicles of Fear</h3>
+							<p>
+								Deep explorations of horror that will make you
+								question what lurks in the shadows.
+							</p>
+						</article>
+
+						<article class="card">
+							<span class="card-category">Creative Writing</span>
+							<h3>The Craft of Terror</h3>
+							<p>
+								Learn to weave nightmares into words and trap
+								fear on the page.
+							</p>
+						</article>
+					</div>
+				</section>
+
+				<div class="skull-divider">
+					<span>🕯️</span>
+				</div>
+
+				<section class="closing">
+					<p>
+						"In the depths of night, when shadows grow long and
+						whispers echo through empty halls, remember: you are
+						never truly alone. Something is always watching."
+					</p>
+				</section>
+			</main>
+		</div>
 
 		<Footer />
 	</body>
