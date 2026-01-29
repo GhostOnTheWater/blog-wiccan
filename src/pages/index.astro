@@ -1,49 +1,99 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead
+			title={SITE_TITLE}
+			description="A modern, global exploration of witchcraft, folk magic, and living traditions across cultures."
+		/>
 	</head>
+
 	<body>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+
+		<main class="container">
+			<section class="hero">
+				<h1>🧙🏽‍♀️ Witches of the World</h1>
+				<p class="lead">
+					A modern blog exploring witchcraft, folk magic, and
+					spiritual practices as they exist across cultures,
+					histories, and living communities.
+				</p>
+			</section>
+
+			<section>
+				<h2>What This Space Is</h2>
+				<p>
+					Witchcraft is not a single tradition—it is many. From
+					European folk magic and African diasporic practices, to
+					Indigenous spiritual systems, Asian shamanic lineages, and
+					contemporary global witchcraft, this blog approaches magic
+					as something grounded in place, culture, and lived
+					experience.
+				</p>
+				<p>
+					Here, witches are not stereotypes or aesthetics. They are
+					healers, rebels, ritualists, scholars, ancestors, and
+					neighbors. Magic is examined with curiosity, respect, and
+					historical context.
+				</p>
+			</section>
+
+			<section>
+				<h2>What We Explore</h2>
+				<ul>
+					<li>
+						🌍 Regional witchcraft traditions from around the world
+					</li>
+					<li>📜 History, persecution, and cultural survival</li>
+					<li>🕯️ Rituals, symbolism, and magical worldviews</li>
+					<li>
+						🧿 Folk practices, ancestral magic, and oral traditions
+					</li>
+					<li>✨ Contemporary witchcraft and modern identities</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Our Values</h2>
+				<p>
+					This is not a space for cultural appropriation,
+					misinformation, or aesthetic-only magic. Context matters.
+					Power matters. Consent and respect are required.
+				</p>
+				<p>
+					We center voices, traditions, and histories with
+					care—especially those that have been marginalized, erased,
+					or misunderstood.
+				</p>
+			</section>
+
+			<section>
+				<h2>Start Reading</h2>
+				<p>
+					Explore essays, research-driven posts, and stories from
+					across the world in our blog archive.
+				</p>
+				<p>
+					New here? Begin with our featured posts or browse by region
+					and tradition.
+				</p>
+			</section>
+
+			<section class="closing">
+				<p>
+					Magic is not just belief—it is relationship, resistance,
+					memory, and practice. Welcome to the work. 🕯️
+				</p>
+			</section>
 		</main>
+
 		<Footer />
 	</body>
 </html>

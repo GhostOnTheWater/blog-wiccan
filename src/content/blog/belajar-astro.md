@@ -1,6 +1,6 @@
 ---
 title: 'Belajar Astro Pertama Kali'
-description: 'Kenapa gue pindah dari WordPress kse Astro'
+description: 'Kenapa gue pindah dari WordPress ke Astro'
 pubDate: 'Jan 29 2026'
 ---
 
